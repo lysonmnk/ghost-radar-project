@@ -317,7 +317,7 @@ Pada pengujian otomatis batch (simulasi Monte Carlo 200 putaran permainan tanpa 
 
 ## Pengembang dan Informasi Akademik
 
-- **Pengembang**: Giva Lysander Manik ([@lysonmnk](https://github.com/lysonmnk))
+- **Pengembang**: lyson Manik ([@lysonmnk](https://github.com/lysonmnk))
 - **Email**: lysonmanik30@gmail.com
 - **Institusi**: Institut Teknologi Del / Program Studi Sarjana Informatika
 - **Konteks Tugas**: Mata Kuliah Kecerdasan Buatan / Sistem Pakar (Semester V)
