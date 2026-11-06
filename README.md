@@ -1,4 +1,4 @@
-# 👻 Ghost Radar — Tactical Paranormal AI Scanner (Certainty Factor Edition)
+# Ghost Radar - Tactical Paranormal AI Scanner (Certainty Factor Edition)
 
 [![Python Version](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -6,41 +6,41 @@
 [![AI Expert System](https://img.shields.io/badge/AI-Certainty_Factor_(MYCIN)-00f3ff?style=for-the-badge&logo=probot&logoColor=black)](https://en.wikipedia.org/wiki/Certainty_factor)
 [![Academic Project](https://img.shields.io/badge/Project-Semester_V_Informatika-00ffaa?style=for-the-badge&logo=google-classroom&logoColor=black)](https://github.com/lysonmnk/ghost-radar-project)
 
-> **Ghost Radar** adalah sistem simulasi investigasi paranormal interaktif berbasis kecerdasan buatan (*Expert System*). Mengimplementasikan model penalaran di bawah ketidakpastian (*Reasoning under Uncertainty*) menggunakan algoritma **Certainty Factor (CF)** dengan aturan kombinasi **MYCIN**, game ini menggabungkan analisis probabilitas sensorik yang bising (*noisy sensory evidence*) dengan antarmuka radar taktis *cyberpunk* modern.
+> **Ghost Radar** adalah sistem simulasi investigasi paranormal interaktif berbasis kecerdasan buatan (*Expert System*). Mengimplementasikan model penalaran di bawah ketidakpastian (*Reasoning under Uncertainty*) menggunakan algoritma **Certainty Factor (CF)** dengan aturan kombinasi **MYCIN**, sistem ini menggabungkan analisis probabilitas sensorik yang bising (*noisy sensory evidence*) dengan antarmuka radar taktis modern.
 
 ---
 
-## 📑 Daftar Isi
+## Daftar Isi
 
-- [✨ Gambaran Proyek](#-gambaran-proyek)
-- [🎯 Fitur Unggulan](#-fitur-unggulan)
-- [🧠 Landasan Teori & Formulasi Matematis](#-landasan-teori--formulasi-matematis)
+- [Gambaran Proyek](#gambaran-proyek)
+- [Fitur Unggulan](#fitur-unggulan)
+- [Landasan Teori dan Formulasi Matematis](#landasan-teori-dan-formulasi-matematis)
   - [1. Metrik Jarak Ruang (Chebyshev Distance)](#1-metrik-jarak-ruang-chebyshev-distance)
   - [2. Perilaku Sensor Lingkungan (Simulation World)](#2-perilaku-sensor-lingkungan-simulation-world)
   - [3. Bobot Bukti Pakar (Expert Rules Evidence)](#3-bobot-bukti-pakar-expert-rules-evidence)
   - [4. Aturan Penggabungan Bukti MYCIN](#4-aturan-penggabungan-bukti-mycin)
   - [5. Heuristik Rekomendasi Scan AI](#5-heuristik-rekomendasi-scan-ai)
   - [6. Ambang Batas Keyakinan Eksekusi](#6-ambang-batas-keyakinan-eksekusi)
-- [🎮 Antarmuka Permainan & Mode](#-antarmuka-permainan--mode)
+- [Antarmuka Permainan dan Mode](#antarmuka-permainan-dan-mode)
   - [1. Tactical Web Radar Scanner (`app.py` / `index.html`)](#1-tactical-web-radar-scanner-apppy--indexhtml)
   - [2. Jupyter Research Notebook (`ghost_radar.ipynb`)](#2-jupyter-research-notebook-ghost_radaripynb)
   - [3. Autonomous Dataset Pipeline (`export_dataset.py`)](#3-autonomous-dataset-pipeline-export_datasetpy)
-- [📂 Struktur Direktori](#-struktur-direktori)
-- [🚀 Panduan Instalasi & Menjalankan](#-panduan-instalasi--menjalankan)
-- [📊 Spesifikasi & Format Dataset CSV](#-spesifikasi--format-dataset-csv)
-- [🧪 Hasil Pengujian & Simulasi Monte Carlo](#-hasil-pengujian--simulasi-monte-carlo)
-- [👤 Pengembang & Informasi Akademik](#-pengembang--informasi-akademik)
-- [📜 Lisensi](#-lisensi)
+- [Struktur Direktori](#struktur-direktori)
+- [Panduan Instalasi dan Menjalankan](#panduan-instalasi-dan-menjalankan)
+- [Spesifikasi dan Format Dataset CSV](#spesifikasi-dan-format-dataset-csv)
+- [Hasil Pengujian dan Simulasi Monte Carlo](#hasil-pengujian-dan-simulasi-monte-carlo)
+- [Pengembang dan Informasi Akademik](#pengembang-dan-informasi-akademik)
+- [Lisensi](#lisensi)
 
 ---
 
-## ✨ Gambaran Proyek
+## Gambaran Proyek
 
-Dalam skenario *Ghost Radar*, entitas astral (hantu) bersembunyi secara acak pada petak kisi berukuran **4 × 4** (atau **3 × 3**) dan bersifat **stasioner** (tidak pernah berpindah tempat selama investigasi berlangsung).
+Dalam skenario *Ghost Radar*, entitas astral (hantu) bersembunyi secara acak pada petak kisi berukuran **4 x 4** (atau **3 x 3**) dan bersifat **stasioner** (tidak pernah berpindah tempat selama investigasi berlangsung).
 
 Investigator (pemain atau AI) dibekali radar taktis dengan keterbatasan sumber daya:
-- 🔋 **Baterai Terbatas (8 Unit)**: Setiap pemindaian (*Scan*) mengonsumsi 1 unit baterai.
-- ❤️ **Integritas Nyawa (3 Unit)**: Setiap salah melakukan penangkapan (*False Catch*) mengurangi 1 nyawa.
+- **Baterai Terbatas (8 Unit)**: Setiap pemindaian (*Scan*) mengonsumsi 1 unit baterai.
+- **Integritas Nyawa (3 Unit)**: Setiap salah melakukan penangkapan (*False Catch*) mengurangi 1 nyawa.
 
 Tantangan utama berasal dari **ketidaksempurnaan sensor paranormal**:
 - Sensor dapat menghasilkan *false alarm* (berbunyi padahal hantu jauh).
@@ -50,11 +50,11 @@ Untuk menyelesaikan masalah ketidakpastian ini, sistem menerapkan **Certainty Fa
 
 ---
 
-## 🎯 Fitur Unggulan
+## Fitur Unggulan
 
 | Komponen | Fitur Utama |
 |---|---|
-| **Tactical Web HUD** | Antarmuka berestetika *Cyberpunk / Sci-Fi Paranormal Terminal* dengan efek *CRT scanline*, canvas partikel ambien, dan palet warna neon. |
+| **Tactical Web HUD** | Antarmuka berestetika *Terminal Sci-Fi / Cyberpunk* dengan efek *CRT scanline*, canvas partikel ambien, dan palet warna neon. |
 | **360° Dynamic Radar Sweep** | Animasi pemindai melingkar berbasis HTML5 Canvas yang berputar sinkron mendeteksi grid target. |
 | **Dynamic EMF Meter** | Jarum dan bar status *Electromagnetic Field* (EMF) analog-digital yang berfluktuasi sesuai intensitas Certainty Factor petak aktif. |
 | **Synthesized 3D Web Audio** | Efek suara prosedural *zero-dependency* (tanpa file audio eksternal) via Web Audio API: radar ping, bisikan frekuensi rendah, static noise, alarm bahaya, dan SFX kemenangan. |
@@ -65,7 +65,7 @@ Untuk menyelesaikan masalah ketidakpastian ini, sistem menerapkan **Certainty Fa
 
 ---
 
-## 🧠 Landasan Teori & Formulasi Matematis
+## Landasan Teori dan Formulasi Matematis
 
 Metode penalaran sistem dirancang dengan prinsip *Expert System Uncertainty*. Berikut adalah perincian matematisnya:
 
@@ -91,8 +91,8 @@ $$d((r_1, c_1), (r_2, c_2)) = \max\left(|r_1 - r_2|,\, |c_1 - c_2|\right)$$
 
 ### 2. Perilaku Sensor Lingkungan (Simulation World)
 Sensor perangkat radar memiliki probabilitas stokastik alami terhadap sinyal hantu:
-- **Jika Hantu Dekat ($d \le 1$)**: $P(\text{Ada Bisikan}) = 0.80$ ($80\%$ akurat mendeteksi bisikan).
-- **Jika Hantu Jauh ($d > 1$)**: $P(\text{Ada Bisikan}) = 0.15$ ($15\%$ peluang *false alarm*).
+- **Jika Hantu Dekat ($d \le 1$)**: $P(\text{Ada Bisikan}) = 0.80$ (80% akurat mendeteksi bisikan).
+- **Jika Hantu Jauh ($d > 1$)**: $P(\text{Ada Bisikan}) = 0.15$ (15% peluang *false alarm*).
 
 > **Catatan Akademik**: Nilai probabilitas di atas mengatur dinamika simulasi lingkungan fisik game. Mesin inferensi AI tidak mengetahui posisi hantu dan semata-mata mengolah bukti sensorik melalui aturan pakar.
 
@@ -103,8 +103,8 @@ Ketika hasil scan diterima, sistem pakar menerbitkan derajat keyakinan ($e$ / *e
 
 | Hasil Scan Sensor | Petak Dekat ($d \le 1$) | Petak Jauh ($d > 1$) | Interpretasi Pakar |
 |---|:---:|:---:|---|
-| 🔊 **Ada Bisikan** | **$+0.60$** | **$+0.08$** *(atau $-0.20$)* | Memberikan bukti kuat mendukung hantu berada di area lingkar dekat pemindaian. |
-| ❄️ **Dingin (Hening)** | **$+0.04$** *(atau $-0.50$)* | **$+0.35$** *(atau $+0.10$)* | Memberikan bukti bahwa hantu berada jauh di luar jangkauan sensor. |
+| **Ada Bisikan** | **+0.60** | **+0.08** *(atau -0.20)* | Memberikan bukti kuat mendukung hantu berada di area lingkar dekat pemindaian. |
+| **Dingin (Hening)** | **+0.04** *(atau -0.50)* | **+0.35** *(atau +0.10)* | Memberikan bukti bahwa hantu berada jauh di luar jangkauan sensor. |
 
 Prior dasar (*base belief*) diawali secara merata pada semua petak yang belum dipilih (*unpicked*):
 
@@ -149,22 +149,22 @@ AI menyatakan kondisi **Yakin** (*High Conviction*) untuk melakukan penangkapan 
 
 ---
 
-## 🎮 Antarmuka Permainan & Mode
+## Antarmuka Permainan dan Mode
 
 ### 1. Tactical Web Radar Scanner (`app.py` / `index.html`)
 Aplikasi mandiri (*standalone*) berbasis web interaktif:
 - Jalankan via perintah cepat: `python app.py`.
-- Otomatis membuka peramban default Anda ke antarmuka taktis beresolusi tinggi.
+- Otomatis membuka peramban default ke antarmuka taktis beresolusi tinggi.
 - Tersedia tombol interaktif: **Scan (Cari Petunjuk)**, **Tangkap (Bust Ghost)**, **Rekomendasi AI (CF)**, dan **Reset Game**.
 - Menampilkan tabel matriks perubahan nilai CF secara langsung (*live step-by-step dataset*).
 
 ```
 =================================================================
-⚡ GHOST RADAR v2.0 - TACTICAL PARANORMAL AI SCANNER
+GHOST RADAR v2.0 - TACTICAL PARANORMAL AI SCANNER
 =================================================================
 [*] Meluncurkan Radar Interaktif di Browser Anda...
 [*] Lokasi File: index.html
-[*] Fitur Aktif: Web Audio SFX 3D, Radar Sweep 360°, EMF Meter Dinamis
+[*] Fitur Aktif: Web Audio SFX 3D, Radar Sweep 360, EMF Meter Dinamis
 =================================================================
 ```
 
@@ -172,7 +172,7 @@ Aplikasi mandiri (*standalone*) berbasis web interaktif:
 
 ### 2. Jupyter Research Notebook (`ghost_radar.ipynb`)
 Lingkungan riset komputasi komprehensif:
-- Penjelasan step-by-step teori uncertainty dan sistem pakar.
+- Penjelasan bertahap teori uncertainty dan sistem pakar.
 - Visualisasi peta heatmap menggunakan pustaka `matplotlib`.
 - Antarmuka widget kontrol interaktif berbasis `ipywidgets`.
 - Mode interaktif konsol CLI via fungsi `main_manual()`.
@@ -183,25 +183,25 @@ Lingkungan riset komputasi komprehensif:
 ### 3. Autonomous Dataset Pipeline (`export_dataset.py`)
 Skrip simulasi cerdas yang menjalankan agen AI secara otonom dari kondisi awal (*Step 0*) hingga kemenangan (*Capture Success*):
 - Menghasilkan berkas CSV rapi yang merekam riwayat setiap petak pada setiap langkah.
-- Digunakan untuk kebutuhan laporan, data visualisasi, maupun *academic assignment submission*.
+- Digunakan untuk kebutuhan laporan, analisis visual, maupun evaluasi akademik.
 
 ---
 
-## 📂 Struktur Direktori
+## Struktur Direktori
 
 ```text
 ghost-radar-project/
 ├── .gitattributes                     # Pengaturan atribut dan normalisasi Git
 ├── .gitignore                        # Berkas pengecualian pelacakan berkas sementara
-├── README.md                          # Dokumentasi teknis & panduan lengkap repositori
+├── README.md                          # Dokumentasi teknis dan panduan repositori
 ├── requirements.txt                   # Daftar pustaka dependensi Python
 │
 ├── app.py                             # Skrip peluncur Tactical Web Radar ke browser default
 ├── index.html                         # Aplikasi Tactical Web Scanner (HTML5, Canvas, Web Audio, CSS3)
-├── ghost_radar.ipynb                  # Jupyter Notebook: Teori, Visualisasi Matplotlib, UI & Simulasi AI
+├── ghost_radar.ipynb                  # Jupyter Notebook: Teori, Visualisasi Matplotlib, UI, dan Simulasi AI
 │
-├── export_dataset.py                  # Skrip simulasi otomatis AI & ekspor dataset ke CSV
-├── simpan_state_grid.py               # Utilitas generator rekaman state CF per langkah (B0K0 & B1K1)
+├── export_dataset.py                  # Skrip simulasi otomatis AI dan ekspor dataset ke CSV
+├── simpan_state_grid.py               # Utilitas generator rekaman state CF per langkah (B0K0 dan B1K1)
 │
 ├── scan_contoh.csv                    # Contoh data sampel riwayat pemindaian sensor
 ├── dataset_state_grid_permainan.csv   # Dataset vertikal: Nilai CF tiap grid per langkah hingga menang
@@ -216,7 +216,7 @@ ghost-radar-project/
 
 ---
 
-## 🚀 Panduan Instalasi & Menjalankan
+## Panduan Instalasi dan Menjalankan
 
 ### 1. Kloning Repositori
 ```bash
@@ -224,7 +224,7 @@ git clone https://github.com/lysonmnk/ghost-radar-project.git
 cd ghost-radar-project
 ```
 
-### 2. Siapkan Lingkungan Virtual (Opsional namun Disarankan)
+### 2. Siapkan Lingkungan Virtual (Opsional)
 ```bash
 # Windows
 python -m venv venv
@@ -251,26 +251,26 @@ pip install -r requirements.txt
 
 ### 4. Menjalankan Aplikasi
 
-#### 🌐 Opsi A: Jalankan Tactical Web Radar (Paling Direkomendasikan)
-Cukup jalankan satu perintah berikut di terminal:
+#### Opsi A: Jalankan Tactical Web Radar
+Jalankan perintah berikut di terminal:
 ```bash
 python app.py
 ```
-*Browser Anda akan terbuka secara otomatis menampilkan antarmuka Tactical Scanner dengan Web Audio.*
+*Browser akan terbuka secara otomatis menampilkan antarmuka Tactical Scanner dengan Web Audio.*
 
-Atau, Anda dapat membuka file [`index.html`](file:///index.html) secara langsung di Google Chrome, Mozilla Firefox, Microsoft Edge, atau Safari.
+Atau buka berkas `index.html` secara langsung di browser (Google Chrome, Firefox, Edge, Safari).
 
 ---
 
-#### 📓 Opsi B: Buka Jupyter Notebook
+#### Opsi B: Buka Jupyter Notebook
 ```bash
 jupyter notebook ghost_radar.ipynb
 ```
-Pilih kernel Python dan jalankan seluruh *cell* berurutan (`Restart & Run All`) untuk mengeksplorasi penjelasan matematis, uji logika, dan visualisasi widget.
+Pilih kernel Python dan jalankan seluruh cell berurutan (*Restart & Run All*) untuk melihat visualisasi dan eksekusi model.
 
 ---
 
-#### 📊 Opsi C: Ekspor Dataset Permainan ke CSV
+#### Opsi C: Ekspor Dataset Permainan ke CSV
 ```bash
 python export_dataset.py
 ```
@@ -278,9 +278,9 @@ Skrip ini akan memutar simulasi permainan AI hingga kemenangan dan secara otomat
 
 ---
 
-## 📊 Spesifikasi & Format Dataset CSV
+## Spesifikasi dan Format Dataset CSV
 
-Modul ekspor menyediakan dataset transparan yang memperlihatkan bagaimana nilai keyakinan tiap petak berevolusi dari kondisi awal (*Prior Base*) sampai penangkapan sukses:
+Modul ekspor menyediakan dataset yang memperlihatkan bagaimana nilai keyakinan tiap petak berevolusi dari kondisi awal (*Prior Base*) sampai penangkapan sukses:
 
 ### Contoh Format Vertikal (`dataset_state_grid_permainan.csv`)
 - **Kolom 1**: Nama Grid (`B0K0`, `B0K1`, ..., `B3K3`)
@@ -289,7 +289,7 @@ Modul ekspor menyediakan dataset transparan yang memperlihatkan bagaimana nilai 
 
 | Grid | Langkah_0 (START) | Langkah_1 (SCAN B2K0) | Langkah_2 (SCAN B2K1) | ... | Langkah_6 (TANGKAP B3K1) |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **INFO_HASIL** | Kondisi Awal (Base Prior) | BUNYI 🔊 | DINGIN ❄️ | ... | 🎉 MENANG (Hantu Tertangkap!) |
+| **INFO_HASIL** | Kondisi Awal (Base Prior) | BUNYI | DINGIN | ... | MENANG (Hantu Tertangkap) |
 | **SISA_BATERAI** | 8 | 7 | 6 | ... | 3 |
 | **SISA_NYAWA** | 3 | 3 | 3 | ... | 3 |
 | **B0K0** | 0.0625 | 0.1375 | 0.0820 | ... | 0.0000 |
@@ -298,24 +298,24 @@ Modul ekspor menyediakan dataset transparan yang memperlihatkan bagaimana nilai 
 
 ---
 
-## 🧪 Hasil Pengujian & Simulasi Monte Carlo
+## Hasil Pengujian dan Simulasi Monte Carlo
 
-Pada pengujian otomatis batch (simulasi Monte Carlo 200 putaran permainan tanpa intervensi manusia):
+Pada pengujian otomatis batch (simulasi Monte Carlo 200 putaran permainan tanpa intervensi manual):
 
 | Parameter Pengujian | Metrik Hasil |
 |---|:---:|
-| **Ukuran Grid** | 4 × 4 (16 Petak) |
+| **Ukuran Grid** | 4 x 4 (16 Petak) |
 | **Algoritma Inferensi** | Certainty Factor (MYCIN Combination) |
 | **Jumlah Permainan Dijalankan** | 200 Game |
-| **Tingkat Kemenangan (*Win Rate*)** | **98.5% – 100%** |
-| **Rata-Rata Konsumsi Baterai (Scan)** | **4.2 – 5.1 Scan** (dari batas 8) |
+| **Tingkat Kemenangan (*Win Rate*)** | **98.5% - 100%** |
+| **Rata-Rata Konsumsi Baterai (Scan)** | **4.2 - 5.1 Scan** (dari batas 8) |
 | **Rata-Rata Kesalahan Tangkap** | **0.12 kali** (dari batas 3 nyawa) |
 
 > **Analisis**: Penggunaan heuristik pemilihan petak berdasarkan *split entropy* berhasil menekan rata-rata jumlah pemindaian secara signifikan, sehingga baterai tidak pernah habis sebelum hantu ditemukan.
 
 ---
 
-## 👤 Pengembang & Informasi Akademik
+## Pengembang dan Informasi Akademik
 
 - **Pengembang**: Giva Lysander Manik ([@lysonmnk](https://github.com/lysonmnk))
 - **Email**: lysonmanik30@gmail.com
@@ -325,6 +325,6 @@ Pada pengujian otomatis batch (simulasi Monte Carlo 200 putaran permainan tanpa 
 
 ---
 
-## 📜 Lisensi
+## Lisensi
 
 Proyek ini dirilis dan didistribusikan di bawah lisensi **MIT License**. Anda bebas menggunakan, memodifikasi, dan mengembangkan kode ini untuk keperluan edukasi maupun penelitian akademik dengan tetap menyertakan atribusi penulis asli.
